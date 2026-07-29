@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>50 Cuadernillos de Gramática China — cadadiaunosminutos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Noto+Serif+TC:wght@400;600;700&family=Work+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F1E4;
+    --paper-dark:#ECE1C7;
+    --ink:#211C15;
+    --ink-soft:#4a4237;
+    --seal:#A3283A;
+    --seal-dark:#7C1E2B;
+    --gold:#B4842A;
+    --jade:#3E5C50;
+    --line:rgba(33,28,21,0.14);
+    --line-strong:rgba(33,28,21,0.28);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(33,28,21,0.035) 0, transparent 45%),
+      radial-gradient(circle at 80% 70%, rgba(163,40,58,0.035) 0, transparent 45%);
+    pointer-events:none;
+    z-index:0;
+  }
+  .zh{font-family:'Noto Serif TC', serif;}
+  .display{font-family:'Fraunces', serif; font-optical-sizing:auto;}
+  .mono{font-family:'Space Mono', monospace; letter-spacing:0.04em;}
+
+  a{color:inherit;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 5%;
+    background:rgba(246,241,228,0.86);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .brand{display:flex; align-items:center; gap:10px; font-weight:600; font-size:0.95rem;}
+  .brand .dot{width:8px;height:8px;border-radius:50%;background:var(--seal);}
+  nav .cta-mini{
+    font-family:'Space Mono',monospace; font-size:0.72rem; letter-spacing:0.06em;
+    padding:9px 18px; border:1px solid var(--ink); border-radius:2px;
+    text-transform:uppercase; text-decoration:none; transition:all .25s ease;
+  }
+  nav .cta-mini:hover{background:var(--seal); color:var(--paper); border-color:var(--seal);}
+
+  section{position:relative; z-index:1;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100vh;
+    display:flex; flex-direction:column; justify-content:center;
+    padding:140px 6% 80px;
+    position:relative;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.15fr 0.85fr; gap:60px; align-items:center;
+    max-width:1240px; margin:0 auto; width:100%;
+  }
+  .eyebrow{
+    font-family:'Space Mono',monospace; font-size:0.75rem; letter-spacing:0.14em;
+    text-transform:uppercase; color:var(--seal-dark); margin-bottom:22px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:"每天一分鐘"; font-family:'Noto Serif TC',serif; font-size:0.95rem; color:var(--ink);}
+  h1.display{
+    font-size:clamp(2.4rem, 4.6vw, 4.1rem);
+    font-weight:600; line-height:1.04; letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+  h1.display em{
+    font-style:italic; font-weight:500; color:var(--seal);
+  }
+  .hero p.lead{
+    margin-top:26px; font-size:1.12rem; max-width:520px; color:var(--ink-soft);
+  }
+  .hero-actions{margin-top:38px; display:flex; gap:16px; flex-wrap:wrap; align-items:center;}
+  .btn-primary{
+    background:var(--seal); color:var(--paper); padding:15px 30px; border-radius:2px;
+    text-decoration:none; font-weight:600; font-size:0.95rem; letter-spacing:0.01em;
+    box-shadow:0 6px 0 var(--seal-dark); transition:transform .2s ease, box-shadow .2s ease;
+    display:inline-block;
+  }
+  .btn-primary:hover{transform:translateY(2px); box-shadow:0 4px 0 var(--seal-dark);}
+  .btn-ghost{
+    text-decoration:none; font-weight:500; font-size:0.9rem; color:var(--ink);
+    border-bottom:1px solid var(--line-strong); padding-bottom:3px;
+  }
+
+  /* stamp */
+  .stamp-wrap{display:flex; justify-content:center; align-items:center; position:relative;}
+  .stamp-wrap svg{width:min(340px, 100%); height:auto; filter:drop-shadow(0 10px 18px rgba(163,40,58,0.18));}
+  .stamp-turbulence{opacity:0.9;}
+
+  /* ---------- STRIP ---------- */
+  .strip{
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    padding:14px 6%;
+    display:flex; gap:40px; justify-content:center; flex-wrap:wrap;
+    font-family:'Space Mono',monospace; font-size:0.75rem; letter-spacing:0.06em;
+    color:var(--ink-soft); text-transform:uppercase;
+  }
+  .strip span b{color:var(--ink); font-weight:700;}
+
+  /* ---------- PROBLEM ---------- */
+  .problem{
+    max-width:900px; margin:0 auto; padding:110px 6% 60px; text-align:center;
+  }
+  .problem .tag{font-family:'Space Mono',monospace; font-size:0.75rem; letter-spacing:0.12em; color:var(--seal-dark); text-transform:uppercase;}
+  .problem h2.display{
+    font-size:clamp(1.7rem, 3vw, 2.5rem); margin:16px 0 22px; font-weight:600; line-height:1.2;
+  }
+  .problem p{font-size:1.05rem; color:var(--ink-soft); max-width:640px; margin:0 auto;}
+
+  /* ---------- METHOD ---------- */
+  .method{padding:70px 6% 100px; max-width:1180px; margin:0 auto;}
+  .method-head{text-align:center; max-width:640px; margin:0 auto 60px;}
+  .method-head .tag{font-family:'Space Mono',monospace; font-size:0.75rem; letter-spacing:0.12em; color:var(--jade); text-transform:uppercase;}
+  .method-head h2.display{font-size:clamp(1.7rem,3vw,2.4rem); font-weight:600; margin-top:14px;}
+
+  .method-cols{display:grid; grid-template-columns:repeat(4, 1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .method-col{background:var(--paper); padding:34px 26px;}
+  .method-col .num{font-family:'Noto Serif TC',serif; font-size:1.6rem; color:var(--seal); margin-bottom:14px; display:block;}
+  .method-col h3{font-size:1.02rem; font-weight:600; margin-bottom:8px;}
+  .method-col p{font-size:0.9rem; color:var(--ink-soft);}
+
+  /* ---------- SAMPLE CARD (signature element) ---------- */
+  .sample{padding:40px 6% 120px; max-width:1180px; margin:0 auto;}
+  .sample-head{text-align:center; max-width:640px; margin:0 auto 50px;}
+  .sample-head .tag{font-family:'Space Mono',monospace; font-size:0.75rem; letter-spacing:0.12em; color:var(--seal-dark); text-transform:uppercase;}
+  .sample-head h2.display{font-size:clamp(1.7rem,3vw,2.4rem); font-weight:600; margin-top:14px;}
+
+  .sample-stage{
+    display:flex; justify-content:center;
+  }
+  .worksheet{
+    position:relative;
+    width:min(680px, 100%);
+    background:
+      linear-gradient(var(--paper-dark) 1px, transparent 1px) 0 0/100% 34px,
+      #FBF7EC;
+    border:1px solid var(--line-strong);
+    padding:44px 46px 38px;
+    box-shadow:0 30px 60px -20px rgba(33,28,21,0.25), 0 3px 0 rgba(33,28,21,0.06);
+    transform:rotate(-1.1deg);
+  }
+  .worksheet .wm-brand{
+    font-family:'Space Mono',monospace; font-size:0.68rem; letter-spacing:0.08em; color:var(--ink-soft);
+    text-transform:uppercase; margin-bottom:18px;
+  }
+  .worksheet h4.zh{font-size:1.35rem; font-weight:700; margin-bottom:14px;}
+  .worksheet .rule{
+    background:#F4E9D6; border:1px solid var(--line); padding:16px 18px; border-radius:3px;
+    font-size:0.92rem; color:var(--ink-soft); margin-bottom:24px;
+  }
+  .worksheet .rule ruby{font-family:'Noto Serif TC',serif; color:var(--seal-dark); font-weight:700;}
+  .worksheet .rule rt{font-family:'Space Mono',monospace; font-size:0.55rem; color:var(--gold);}
+  .worksheet .ex-label{font-size:0.82rem; font-weight:600; margin-bottom:10px; color:var(--ink);}
+  .worksheet ol{padding-left:22px; font-size:0.92rem; color:var(--ink-soft); margin-bottom:20px;}
+  .worksheet ol li{margin-bottom:5px;}
+  .worksheet .correct-row{
+    display:flex; gap:10px; align-items:baseline; font-family:'Noto Serif TC',serif; font-size:1rem;
+    padding:6px 0; border-bottom:1px dashed var(--line);
+  }
+  .worksheet .correct-row .pin{font-family:'Space Mono',monospace; font-size:0.6rem; color:var(--gold); display:block;}
+  .stamp-diag{
+    position:absolute; top:38px; right:34px;
+    border:3px solid var(--seal); color:var(--seal);
+    font-family:'Space Mono',monospace; font-weight:700; font-size:0.95rem; letter-spacing:0.12em;
+    padding:8px 16px; transform:rotate(9deg);
+    mix-blend-mode:multiply; opacity:0.82; text-transform:uppercase;
+  }
+  .sample-caption{
+    text-align:center; margin-top:26px; font-size:0.85rem; color:var(--ink-soft); font-family:'Space Mono',monospace;
+  }
+
+  /* ---------- UNIT INDEX ---------- */
+  .index{padding:40px 6% 110px; max-width:960px; margin:0 auto;}
+  .index-head{text-align:center; max-width:640px; margin:0 auto 50px;}
+  .index-head .tag{font-family:'Space Mono',monospace; font-size:0.75rem; letter-spacing:0.12em; color:var(--jade); text-transform:uppercase;}
+  .index-head h2.display{font-size:clamp(1.7rem,3vw,2.4rem); font-weight:600; margin-top:14px;}
+
+  details.group{
+    border-bottom:1px solid var(--line); padding:22px 0;
+  }
+  details.group summary{
+    cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between;
+    font-weight:600; font-size:1.05rem;
+  }
+  details.group summary::-webkit-details-marker{display:none;}
+  details.group summary .grp-range{font-family:'Space Mono',monospace; font-size:0.72rem; color:var(--seal-dark); margin-right:14px;}
+  details.group summary .arrow{font-family:'Space Mono',monospace; transition:transform .25s ease; color:var(--ink-soft);}
+  details.group[open] summary .arrow{transform:rotate(45deg);}
+  .unit-list{
+    margin-top:18px; display:grid; grid-template-columns:repeat(2,1fr); gap:2px 26px;
+  }
+  .unit-row{
+    display:flex; gap:12px; padding:9px 0; border-bottom:1px solid var(--line); align-items:baseline;
+  }
+  .unit-row .n{
+    font-family:'Space Mono',monospace; font-size:0.72rem; color:var(--gold); min-width:24px;
+  }
+  .unit-row .zh{font-size:0.95rem; font-weight:600; color:var(--ink); white-space:nowrap;}
+  .unit-row .es{font-size:0.84rem; color:var(--ink-soft);}
+
+  @media(max-width:680px){ .unit-list{grid-template-columns:1fr;} }
+
+  /* ---------- AUDIENCE ---------- */
+  .audience{padding:70px 6% 110px; background:var(--ink); color:var(--paper);}
+  .audience-inner{max-width:1120px; margin:0 auto;}
+  .audience-head{text-align:center; max-width:600px; margin:0 auto 60px;}
+  .audience-head .tag{font-family:'Space Mono',monospace; font-size:0.75rem; letter-spacing:0.12em; color:var(--gold); text-transform:uppercase;}
+  .audience-head h2.display{font-size:clamp(1.7rem,3vw,2.4rem); font-weight:600; margin-top:14px; color:var(--paper);}
+  .audience-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:rgba(246,241,228,0.14);}
+  .audience-card{background:var(--ink); padding:30px 24px;}
+  .audience-card .zh{font-size:1.2rem; color:var(--gold); margin-bottom:10px; display:block;}
+  .audience-card h3{font-size:0.98rem; font-weight:600; margin-bottom:10px; color:var(--paper);}
+  .audience-card p{font-size:0.86rem; color:rgba(246,241,228,0.68);}
+  @media(max-width:900px){ .audience-grid{grid-template-columns:repeat(2,1fr);} }
+
+  /* ---------- PRICING ---------- */
+  .pricing{padding:110px 6%; max-width:1080px; margin:0 auto;}
+  .pricing-head{text-align:center; max-width:640px; margin:0 auto 60px;}
+  .pricing-head .tag{font-family:'Space Mono',monospace; font-size:0.75rem; letter-spacing:0.12em; color:var(--seal-dark); text-transform:uppercase;}
+  .pricing-head h2.display{font-size:clamp(1.7rem,3vw,2.4rem); font-weight:600; margin-top:14px;}
+  .plans{display:grid; grid-template-columns:1fr 1fr; gap:28px;}
+  .plan{
+    border:1px solid var(--line-strong); padding:40px 34px; position:relative; background:#FBF7EC;
+  }
+  .plan.premium{border-color:var(--seal);}
+  .plan .badge{
+    position:absolute; top:-13px; left:34px; background:var(--seal); color:var(--paper);
+    font-family:'Space Mono',monospace; font-size:0.65rem; padding:5px 12px; letter-spacing:0.08em;
+    text-transform:uppercase;
+  }
+  .plan h3.zh{font-size:1.3rem; margin-bottom:6px;}
+  .plan .price{font-family:'Fraunces',serif; font-size:2.6rem; font-weight:600; margin:16px 0 4px; color:var(--ink);}
+  .plan .price sup{font-size:1rem; font-family:'Space Mono',monospace; vertical-align:middle; color:var(--ink-soft);}
+  .plan .count{font-family:'Space Mono',monospace; font-size:0.78rem; color:var(--ink-soft); margin-bottom:20px; display:block;}
+  .plan p.desc{color:var(--ink-soft); font-size:0.94rem; margin-bottom:26px;}
+  .plan ul{list-style:none; font-size:0.88rem; color:var(--ink-soft); margin-bottom:0;}
+  .plan ul li{padding:7px 0; border-top:1px solid var(--line); display:flex; gap:10px;}
+  .plan ul li::before{content:"印"; font-family:'Noto Serif TC',serif; color:var(--seal); font-size:0.75rem;}
+  .price-note{text-align:center; margin-top:36px; font-size:0.88rem; color:var(--ink-soft); font-style:italic;}
+
+  /* ---------- CONTACT / CTA ---------- */
+  .contact{
+    padding:110px 6% 130px; text-align:center; background:var(--paper-dark);
+    border-top:1px solid var(--line);
+  }
+  .contact .tag{font-family:'Space Mono',monospace; font-size:0.75rem; letter-spacing:0.12em; color:var(--seal-dark); text-transform:uppercase;}
+  .contact h2.display{font-size:clamp(1.9rem,3.6vw,3rem); font-weight:600; max-width:680px; margin:18px auto 20px; line-height:1.15;}
+  .contact p{max-width:520px; margin:0 auto 40px; color:var(--ink-soft);}
+  .contact-buttons{display:flex; gap:18px; justify-content:center; flex-wrap:wrap;}
+  .contact-card{
+    display:flex; align-items:center; gap:12px; background:var(--paper); border:1px solid var(--line-strong);
+    padding:16px 26px; text-decoration:none; color:var(--ink); font-weight:600; font-size:0.95rem;
+    transition:all .25s ease;
+  }
+  .contact-card:hover{background:var(--seal); color:var(--paper); border-color:var(--seal);}
+  .contact-card .ig-dot{width:9px; height:9px; border-radius:50%; background:var(--seal); flex-shrink:0;}
+  .contact-card:hover .ig-dot{background:var(--paper);}
+
+  footer{
+    padding:40px 6%; text-align:center; font-family:'Space Mono',monospace; font-size:0.72rem;
+    color:var(--ink-soft); border-top:1px solid var(--line);
+  }
+
+  @media(max-width:900px){
+    .hero-grid{grid-template-columns:1fr;}
+    .stamp-wrap{order:-1; margin-bottom:20px;}
+    .method-cols{grid-template-columns:1fr 1fr;}
+    .audience-grid{grid-template-columns:1fr 1fr;}
+    .plans{grid-template-columns:1fr;}
+    .worksheet{padding:34px 26px 30px;}
+  }
+  @media(max-width:520px){
+    .method-cols{grid-template-columns:1fr;}
+    .audience-grid{grid-template-columns:1fr;}
+  }
+
+  @media (prefers-reduced-motion:no-preference){
+    .reveal{opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease;}
+    .reveal.in{opacity:1; transform:translateY(0);}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand"><span class="dot"></span> cadadiaunosminutos</div>
+  <a class="cta-mini" href="#comprar">Cómo comprar</a>
+</nav>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="eyebrow">50 cuadernillos · gramática china</div>
+      <h1 class="display">Aprendiste la regla.<br>Ahora <em>practícala</em><br>hasta que sea tuya.</h1>
+      <p class="lead">50 hojas de ejercicios diseñadas para hispanohablantes que estudian mandarín — un punto gramatical por hoja, con guía, traducción, corrección y respuestas incluidas.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#comprar">Quiero mis cuadernillos</a>
+        <a class="btn-ghost" href="#muestra">Ver una hoja real ↓</a>
+      </div>
+    </div>
+    <div class="stamp-wrap">
+      <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="rough">
+            <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="7" result="noise"/>
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="6"/>
+          </filter>
+        </defs>
+        <g filter="url(#rough)">
+          <circle cx="150" cy="150" r="128" fill="none" stroke="#A3283A" stroke-width="7"/>
+          <circle cx="150" cy="150" r="108" fill="none" stroke="#A3283A" stroke-width="2.5"/>
+          <text x="150" y="108" text-anchor="middle" font-family="'Noto Serif TC',serif" font-size="34" fill="#A3283A" font-weight="700">每</text>
+          <text x="150" y="150" text-anchor="middle" font-family="'Noto Serif TC',serif" font-size="34" fill="#A3283A" font-weight="700">日</text>
+          <text x="150" y="192" text-anchor="middle" font-family="'Noto Serif TC',serif" font-size="34" fill="#A3283A" font-weight="700">一</text>
+          <text x="150" y="234" text-anchor="middle" font-family="'Noto Serif TC',serif" font-size="34" fill="#A3283A" font-weight="700">分</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <span><b>50</b> hojas de ejercicios</span>
+  <span><b>50</b> puntos gramaticales</span>
+  <span><b>4</b> tipos de ejercicio por hoja</span>
+  <span>Trad. y simplificado</span>
+  <span>Respuestas incluidas</span>
+</div>
+
+<!-- ================= PROBLEM ================= -->
+<section class="problem reveal">
+  <div class="tag">El problema</div>
+  <h2 class="display">Entiendes la explicación en clase. El problema llega después.</h2>
+  <p>Ves un video, lees la regla, asientes con la cabeza — y a la hora de escribir una frase, se te va. No es falta de nivel: es falta de repetición estructurada. Este material existe para llenar exactamente ese vacío entre "lo entendí" y "lo puedo usar".</p>
+</section>
+
+<!-- ================= METHOD ================= -->
+<section class="method">
+  <div class="method-head reveal">
+    <div class="tag">Cómo está construida cada hoja</div>
+    <h2 class="display">Una hoja, un punto gramatical, cuatro pasos.</h2>
+  </div>
+  <div class="method-cols reveal">
+    <div class="method-col">
+      <span class="num">壹</span>
+      <h3>Guía gramatical</h3>
+      <p>Una explicación corta y profesional del punto de la unidad, sin rodeos, pensada para hispanohablantes.</p>
+    </div>
+    <div class="method-col">
+      <span class="num">貳</span>
+      <h3>Traduce las oraciones</h3>
+      <p>Frases en español que debes construir en chino usando la estructura recién explicada.</p>
+    </div>
+    <div class="method-col">
+      <span class="num">參</span>
+      <h3>Corrige / reordena</h3>
+      <p>Oraciones con errores o desordenadas en chino: entrenas el ojo para detectar la estructura correcta.</p>
+    </div>
+    <div class="method-col">
+      <span class="num">肆</span>
+      <h3>Respuestas sugeridas</h3>
+      <p>Cada hoja incluye respuestas completas, con pinyin, para que puedas practicar sin un profesor al lado.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SAMPLE WORKSHEET ================= -->
+<section class="sample" id="muestra">
+  <div class="sample-head reveal">
+    <div class="tag">Una hoja real del cuadernillo</div>
+    <h2 class="display">Unidad 1 — El uso de 很, tal como la recibes</h2>
+  </div>
+  <div class="sample-stage reveal">
+    <div class="worksheet">
+      <div class="stamp-diag">muestra</div>
+      <div class="wm-brand">cadadiaunosminutos · Unidad 01 / 50</div>
+      <h4 class="zh">Unidad 1: El uso de <ruby>很<rt>hěn</rt></ruby></h4>
+      <div class="rule">¿Ser o estar? ¡Ninguno! En chino no usamos el verbo "是" (shì – ser) para describir características. En su lugar, usamos "<ruby>很<rt>hěn</rt></ruby>" como un puente entre el sujeto y el adjetivo.</div>
+
+      <div class="ex-label">一、Traduce las oraciones</div>
+      <ol>
+        <li>Mi madre es bonita.</li>
+        <li>Mi hermana mayor es alta (高).</li>
+        <li>Este café es barato.</li>
+        <li>La pizza está deliciosa.</li>
+      </ol>
+
+      <div class="ex-label">respuestas sugeridas</div>
+      <div class="correct-row">我的妈妈很漂亮。<span class="pin">wǒ de māma hěn piàoliang</span></div>
+      <div class="correct-row">我的姐姐很高。<span class="pin">wǒ de jiějiě hěn gāo</span></div>
+      <div class="correct-row">这杯咖啡很便宜。<span class="pin">zhè bēi kāfēi hěn piányí</span></div>
+    </div>
+  </div>
+  <p class="sample-caption">Así se ve cada una de las 50 hojas — con guía, ejercicios y respuestas completas.</p>
+</section>
+
+<!-- ================= FULL INDEX ================= -->
+<section class="index" id="indice">
+  <div class="index-head reveal">
+    <div class="tag">El contenido completo</div>
+    <h2 class="display">Las 50 unidades, organizadas por nivel</h2>
+  </div>
+
+  <details class="group" open>
+    <summary><span><span class="grp-range">Unidad 1 – Unidad 10</span></span><span class="arrow">+</span></summary>
+    <div class="unit-list">
+      <div class="unit-row"><span class="n">01</span><span class="zh">很</span><span class="es">describir características</span></div>
+      <div class="unit-row"><span class="n">02</span><span class="zh">的</span><span class="es">posesión y conexión</span></div>
+      <div class="unit-row"><span class="n">03</span><span class="zh">有</span><span class="es">tener / existencia</span></div>
+      <div class="unit-row"><span class="n">04</span><span class="zh">数字</span><span class="es">los números</span></div>
+      <div class="unit-row"><span class="n">05</span><span class="zh">时间</span><span class="es">el tiempo y las fechas</span></div>
+      <div class="unit-row"><span class="n">06</span><span class="zh">去</span><span class="es">ir a un lugar</span></div>
+      <div class="unit-row"><span class="n">07</span><span class="zh">也</span><span class="es">también</span></div>
+      <div class="unit-row"><span class="n">08</span><span class="zh">都</span><span class="es">todos / ambos</span></div>
+      <div class="unit-row"><span class="n">09</span><span class="zh">常</span><span class="es">frecuencia</span></div>
+      <div class="unit-row"><span class="n">10</span><span class="zh">帮</span><span class="es">ayudar a alguien a hacer algo</span></div>
+    </div>
+  </details>
+
+  <details class="group">
+    <summary><span><span class="grp-range">Unidad 11 – Unidad 20</span></span><span class="arrow">+</span></summary>
+    <div class="unit-list">
+      <div class="unit-row"><span class="n">11</span><span class="zh">太…了</span><span class="es">demasiado + adjetivo</span></div>
+      <div class="unit-row"><span class="n">12</span><span class="zh">一点 / 有一点</span><span class="es">un poco</span></div>
+      <div class="unit-row"><span class="n">13</span><span class="zh">V得</span><span class="es">grado / manera de la acción</span></div>
+      <div class="unit-row"><span class="n">14</span><span class="zh">会</span><span class="es">saber hacer / posibilidad</span></div>
+      <div class="unit-row"><span class="n">15</span><span class="zh">在 + 方位</span><span class="es">estar en / direcciones</span></div>
+      <div class="unit-row"><span class="n">16</span><span class="zh">在 + V</span><span class="es">acción en progreso</span></div>
+      <div class="unit-row"><span class="n">17</span><span class="zh">方位精确</span><span class="es">ubicaciones precisas</span></div>
+      <div class="unit-row"><span class="n">18</span><span class="zh">从 A 到 B</span><span class="es">desde… hasta…</span></div>
+      <div class="unit-row"><span class="n">19</span><span class="zh">每</span><span class="es">cada</span></div>
+      <div class="unit-row"><span class="n">20</span><span class="zh">可以</span><span class="es">poder / permiso</span></div>
+    </div>
+  </details>
+
+  <details class="group">
+    <summary><span><span class="grp-range">Unidad 21 – Unidad 30</span></span><span class="arrow">+</span></summary>
+    <div class="unit-list">
+      <div class="unit-row"><span class="n">21</span><span class="zh">跟</span><span class="es">con / y</span></div>
+      <div class="unit-row"><span class="n">22</span><span class="zh">怎么</span><span class="es">cómo</span></div>
+      <div class="unit-row"><span class="n">23</span><span class="zh">比 vs 比较</span><span class="es">comparaciones</span></div>
+      <div class="unit-row"><span class="n">24</span><span class="zh">持续时间</span><span class="es">expresando la duración</span></div>
+      <div class="unit-row"><span class="n">25</span><span class="zh">的时候</span><span class="es">cuando / en el momento de</span></div>
+      <div class="unit-row"><span class="n">26</span><span class="zh">如果 / 要是</span><span class="es">oraciones condicionales</span></div>
+      <div class="unit-row"><span class="n">27</span><span class="zh">Adj + Adj + 的</span><span class="es">adjetivos dobles</span></div>
+      <div class="unit-row"><span class="n">28</span><span class="zh">的（进阶）</span><span class="es">uso avanzado de 的</span></div>
+      <div class="unit-row"><span class="n">29</span><span class="zh">了（状态改变）</span><span class="es">cambio de estado</span></div>
+      <div class="unit-row"><span class="n">30</span><span class="zh">了（动作完成）</span><span class="es">acción terminada</span></div>
+    </div>
+  </details>
+
+  <details class="group">
+    <summary><span><span class="grp-range">Unidad 31 – Unidad 40</span></span><span class="arrow">+</span></summary>
+    <div class="unit-list">
+      <div class="unit-row"><span class="n">31</span><span class="zh">V1了…就V2</span><span class="es">acciones secuenciales</span></div>
+      <div class="unit-row"><span class="n">32</span><span class="zh">V + 了没</span><span class="es">confirmar si algo pasó</span></div>
+      <div class="unit-row"><span class="n">33</span><span class="zh">快V了</span><span class="es">eventos inminentes</span></div>
+      <div class="unit-row"><span class="n">34</span><span class="zh">双了</span><span class="es">doble 了</span></div>
+      <div class="unit-row"><span class="n">35</span><span class="zh">VV看</span><span class="es">intentar hacer algo</span></div>
+      <div class="unit-row"><span class="n">36</span><span class="zh">因为…所以…</span><span class="es">porque… por lo tanto…</span></div>
+      <div class="unit-row"><span class="n">37</span><span class="zh">就</span><span class="es">justo / entonces</span></div>
+      <div class="unit-row"><span class="n">38</span><span class="zh">有（referencia indefinida）</span><span class="es">hay alguien / algo que…</span></div>
+      <div class="unit-row"><span class="n">39</span><span class="zh">先…再…</span><span class="es">primero… luego…</span></div>
+      <div class="unit-row"><span class="n">40</span><span class="zh">是…的</span><span class="es">énfasis en el pasado</span></div>
+    </div>
+  </details>
+
+  <details class="group">
+    <summary><span><span class="grp-range">Unidad 41 – Unidad 50</span></span><span class="arrow">+</span></summary>
+    <div class="unit-list">
+      <div class="unit-row"><span class="n">41</span><span class="zh">以前 / 以后 / 之前 / 之后</span><span class="es">antes / después</span></div>
+      <div class="unit-row"><span class="n">42</span><span class="zh">一…就…</span><span class="es">en cuanto…</span></div>
+      <div class="unit-row"><span class="n">43</span><span class="zh">不 vs 没</span><span class="es">la negación</span></div>
+      <div class="unit-row"><span class="n">44</span><span class="zh">interrogativos avanzados</span><span class="es">preguntas complejas</span></div>
+      <div class="unit-row"><span class="n">45</span><span class="zh">V不V</span><span class="es">preguntas sí/no</span></div>
+      <div class="unit-row"><span class="n">46</span><span class="zh">一样</span><span class="es">igual que</span></div>
+      <div class="unit-row"><span class="n">47</span><span class="zh">更</span><span class="es">comparación con "más"</span></div>
+      <div class="unit-row"><span class="n">48</span><span class="zh">没有…那么</span><span class="es">comparación negativa</span></div>
+      <div class="unit-row"><span class="n">49</span><span class="zh">一点</span><span class="es">un poco (uso avanzado)</span></div>
+      <div class="unit-row"><span class="n">50</span><span class="zh">把</span><span class="es">estructura con 把</span></div>
+    </div>
+  </details>
+</section>
+
+<!-- ================= AUDIENCE ================= -->
+<section class="audience">
+  <div class="audience-inner">
+    <div class="audience-head reveal">
+      <div class="tag">¿Es esto para ti?</div>
+      <h2 class="display">Pensado para cuatro tipos de estudiante</h2>
+    </div>
+    <div class="audience-grid reveal">
+      <div class="audience-card">
+        <span class="zh">學</span>
+        <h3>Alumnos hispanohablantes</h3>
+        <p>Diseñado desde cero para hablantes de español, no traducido de otro idioma.</p>
+      </div>
+      <div class="audience-card">
+        <span class="zh">習</span>
+        <h3>Autoestudiantes</h3>
+        <p>¿Entiendes la teoría pero no sabes cómo practicarla? Este material llena ese vacío.</p>
+      </div>
+      <div class="audience-card">
+        <span class="zh">台</span>
+        <h3>Estudiantes en Taiwán</h3>
+        <p>Basado en materiales usados en Taiwán — un apoyo real para tu aprendizaje diario.</p>
+      </div>
+      <div class="audience-card">
+        <span class="zh">繁簡</span>
+        <h3>Versión flexible</h3>
+        <p>Disponible en caracteres tradicionales y simplificados, según tu preferencia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRICING ================= -->
+<section class="pricing" id="precios">
+  <div class="pricing-head reveal">
+    <div class="tag">Paquetes</div>
+    <h2 class="display">Una hoja cuesta menos que un café</h2>
+  </div>
+  <div class="plans reveal">
+    <div class="plan">
+      <h3 class="zh">入門 · Paquete de Inicio</h3>
+      <span class="count">10 cuadernillos</span>
+      <div class="price">$8<sup>USD</sup></div>
+      <p class="desc">La forma perfecta de descubrir un método de práctica eficaz y bien estructurado.</p>
+      <ul>
+        <li>10 hojas a elegir del índice completo</li>
+        <li>Guía gramatical + respuestas incluidas</li>
+        <li>Tradicional o simplificado</li>
+      </ul>
+    </div>
+    <div class="plan premium">
+      <span class="badge">Recomendado</span>
+      <h3 class="zh">高級 · Paquete Premium</h3>
+      <span class="count">50 cuadernillos — el set completo</span>
+      <div class="price">$36<sup>USD</sup></div>
+      <p class="desc">Accede a todo el contenido y domina las estructuras gramaticales más importantes del chino, ahorrando más y aprendiendo más.</p>
+      <ul>
+        <li>Las 50 hojas, de principio a fin</li>
+        <li>Guía gramatical + respuestas completas</li>
+        <li>Tradicional o simplificado</li>
+        <li>Equivale a menos de $0.75 USD por hoja</li>
+      </ul>
+    </div>
+  </div>
+  <p class="price-note">Una sola hoja de ejercicios cuesta menos que un café — pero el conocimiento que ganarás no tiene precio.</p>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="comprar">
+  <div class="tag">Cómo comprar</div>
+  <h2 class="display">La compra se hace por mensaje directo</h2>
+  <p>Escríbeme indicando el paquete que quieres (Inicio o Premium) y si prefieres caracteres tradicionales o simplificados. Te confirmo disponibilidad y forma de pago por el mismo canal.</p>
+  <div class="contact-buttons">
+    <a class="contact-card" href="https://instagram.com/cadadiaunosminutos_ben_chino" target="_blank" rel="noopener">
+      <span class="ig-dot"></span> Instagram — @cadadiaunosminutos_ben_chino
+    </a>
+    <a class="contact-card" href="mailto:a2224907@yahoo.com.tw">
+      <span class="ig-dot"></span> a2224907@yahoo.com.tw
+    </a>
+  </div>
+</section>
+
+<footer>
+  © 2026 @cadadiaunosminutos — Material original. Uso personal exclusivo del comprador. Prohibida la reventa, distribución o reproducción sin autorización.
+</footer>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:0.15});
+  els.forEach(el=>io.observe(el));
+
+  // Manual smooth-scroll for same-page anchors.
+  // Prevents the browser's native "#hash" navigation, which some embedded
+  // preview environments mistakenly treat as a full page reload.
+  document.querySelectorAll('a[href^="#"]').forEach(link=>{
+    link.addEventListener('click', function(e){
+      const id = this.getAttribute('href').slice(1);
+      const target = document.getElementById(id);
+      if(target){
+        e.preventDefault();
+        target.scrollIntoView({behavior:'smooth', block:'start'});
+        history.replaceState(null, '', '#'+id);
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
