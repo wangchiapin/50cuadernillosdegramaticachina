@@ -7,6 +7,17 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Noto+Serif+TC:wght@400;600;700&family=Work+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- ====== Google Analytics 4 ======
+     Reemplaza "G-XXXXXXXXXX" por tu Measurement ID real
+     (Admin > Flujos de datos > tu flujo de sitio web, en analytics.google.com) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
 <style>
   :root{
     --paper:#F6F1E4;
@@ -612,6 +623,20 @@
         history.replaceState(null, '', '#'+id);
       }
     });
+  });
+
+  // ---- GA4 event tracking for key conversion actions ----
+  function trackEvent(name, params){
+    if(typeof gtag === 'function'){ gtag('event', name, params || {}); }
+  }
+  document.querySelectorAll('.btn-primary').forEach(el=>{
+    el.addEventListener('click', ()=> trackEvent('cta_click', {cta_label: el.textContent.trim()}));
+  });
+  document.querySelectorAll('a[href*="instagram.com"]').forEach(el=>{
+    el.addEventListener('click', ()=> trackEvent('contact_click', {method:'instagram'}));
+  });
+  document.querySelectorAll('a[href^="mailto:"]').forEach(el=>{
+    el.addEventListener('click', ()=> trackEvent('contact_click', {method:'email'}));
   });
 </script>
 
